@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mongo:
+    container_name: "mongo"
+    image: mongo:5.0.8
+    command: mongod
+    environment:
+      - DATABASE_NAME=teamcamp
+    networks:
+      - aiplayground
+    restart: always
+
+  server:
+    container_name: "server"
+    image: test
+    depends_on:
+      - mongo
+    ports:
+      - '4030:3099'
+    networks:
+      - aiplayground
+    volumes:
+      - ${PWD}/../statics:/usr/app/resources
+    restart: always
+
+networks:
+  aiplayground:
+
+

@@ -1,0 +1,2 @@
+[![codecov](https://codecov.io/gh/Juanjofp/ttn-webhook/branch/main/graph/badge.svg?token=SULPH6AL5L)](https://codecov.io/gh/Juanjofp/ttn-webhook)
+[![Node.js CI](https://github.com/Juanjofp/ttn-webhook/actions/workflows/node.yml/badge.svg)](https://github.com/Juanjofp/ttn-webhook/actions/workflows/node.yml)
