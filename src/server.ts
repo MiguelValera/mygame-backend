@@ -6,6 +6,7 @@ import { NOSQL_DB } from './databases/mongo-db';
 import fastifyCors from 'fastify-cors';
 import fastifyhelmet from 'fastify-helmet';
 import { buildUploadPlugin } from './plugins/upload-time';
+import { buildresultPlugin } from './plugins/result';
 
 export type TestBody = {
     myImage: string;
@@ -35,6 +36,7 @@ export function buildServer({ logger, dbNoSql }: ServerDeps): FastifyInstance {
 
 //<----------------Our plugins---------------------->
     server.register(buildUploadPlugin(dbNoSql));
+    server.register(buildresultPlugin(dbNoSql));
 //<----------------Our plugins---------------------->
 
     return server;
