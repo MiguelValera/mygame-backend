@@ -19,9 +19,9 @@
         "validate": "npm run lint && npm run test-ci",
         "pretty-quick": "pretty-quick --staged",
         "start:mariadb": "docker run --rm --detach --name tc-mariadb --env MARIADB_USER=tcuser --env MARIADB_PASSWORD=tcpasswd --env MARIADB_DATABASE=teamcamp --env MARIADB_ROOT_PASSWORD=my-secret-pw  -p 3306:3306 mariadb:latest",
-        "start:mongodb": "docker run --rm --detach --name tc-mongodb -p 27017:27017 mongo"
+        "start:mongodb": "docker run --rm --detach --name mongo -p 27017:27017 mongo"
     },
-    "author": "Erik García & Miguel Valera",
+    "author": "Miguel Valera",
     "license": "MIT",
     "devDependencies": {
         "@types/bcryptjs": "^2.4.2",

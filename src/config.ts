@@ -78,7 +78,7 @@ export function buildConfig(): Config {
             database: {
                 doc: 'The database name to bind the MongoDB server.',
                 format: String,
-                default: 'teamcamp',
+                default: 'mygame',
                 env: 'MONGO_DATABASE_NAME'
             }
         }

@@ -7,7 +7,6 @@ import {
 } from 'fastify';
 
 
-
 export function buildUploadPlugin(dbNoSql: NOSQL_DB){
 
     return async function uploadPlugin(server:FastifyInstance, opts:FastifyRegisterOptions<Record<string,unknown>>, next: () => void) {
@@ -23,7 +22,21 @@ export function buildUploadPlugin(dbNoSql: NOSQL_DB){
                 
                if(username && time) json = {username: username, time: time}
                
-               if(json) await dbNoSql.getCollection().updateOne({userName: json.username},{$set: {time: json.time}},{upsert: true} );
+               if(json){
+
+
+                const checkIfExists = await dbNoSql.getCollection().findOne({username: json.username});
+
+                if(checkIfExists){
+                    if(json.time<checkIfExists.time)await dbNoSql.getCollection().updateOne({username: json.username},{$set: {time: json.time}});
+                }else{
+                    await dbNoSql.getCollection().insertOne(json);
+                } 
+
+
+
+               } 
+   
                
                     reply.header('Access-Control-Allow-Origin', '*');
                     reply
@@ -32,7 +45,6 @@ export function buildUploadPlugin(dbNoSql: NOSQL_DB){
                         .send('OK');
                 
             }
-        });
-      next();
+        })
     };
 }

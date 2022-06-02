@@ -5,7 +5,7 @@ services:
     image: mongo:5.0.8
     command: mongod
     environment:
-      - DATABASE_NAME=teamcamp
+      - DATABASE_NAME=mygame
     networks:
       - aiplayground
     restart: always

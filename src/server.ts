@@ -18,7 +18,7 @@ export type ServerDeps = {
 };
 
 export function buildServer({ logger, dbNoSql }: ServerDeps): FastifyInstance {
-    
+
     const server = fastify({ logger });
 
     server.register(fastifyhelmet, {
@@ -26,7 +26,7 @@ export function buildServer({ logger, dbNoSql }: ServerDeps): FastifyInstance {
         crossOriginEmbedderPolicy: false,
         crossOriginResourcePolicy: false
     });
-   
+
     server.register(fastifyCors, {
         origin: '*',
         methods: ['GET', 'PUT', 'POST', 'OPTIONS'],
@@ -34,10 +34,10 @@ export function buildServer({ logger, dbNoSql }: ServerDeps): FastifyInstance {
         allowedHeaders: ['Content-Type', 'Accept', 'Description', 'Authorization']
     });
 
-//<----------------Our plugins---------------------->
+    //<----------------My plugins---------------------->
     server.register(buildUploadPlugin(dbNoSql));
     server.register(buildresultPlugin(dbNoSql));
-//<----------------Our plugins---------------------->
+    //<----------------My plugins---------------------->
 
     return server;
 }

@@ -16,12 +16,9 @@ export function buildMongoDatabase({ host, port, database }: MongoConfig) {
         db = client.db(database);
     }
     
-    function getCollectionUsers(){
-        return db.collection('users');
-    }
 
     function getCollection() {
-        return db.collection('results');
+        return db.collection('mygame');
     }
 
     function getDatabase() {
@@ -43,8 +40,7 @@ export function buildMongoDatabase({ host, port, database }: MongoConfig) {
         getDatabase,
         getCollection,
         close, 
-        AddMongoDb,
-        getCollectionUsers
+        AddMongoDb
     };
 }
 
