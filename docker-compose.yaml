@@ -12,7 +12,7 @@ services:
 
   server:
     container_name: "server"
-    image: test
+    image: miguelvalera97/fruit-frog:latest
     depends_on:
       - mongo
     ports:
